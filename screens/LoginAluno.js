@@ -9,10 +9,14 @@ export default function LoginAluno({ navigation }) {
   const [matricula, setMatricula] = useState("");
 
   const handleLogin = () => {
-    // salva os dados do aluno no contexto
+    if (!nome || !matricula) {
+      alert("Por favor, preencha nome e matrícula.");
+      return;
+    }
+    // salva os dados digitados no contexto
     setUser({ tipo: "aluno", nome, matricula });
-    // redireciona para o Cardápio
-    navigation.navigate("Cardapio");
+    // redireciona para o fluxo principal (Drawer + Tabs)
+    navigation.replace("Main");
   };
 
   return (

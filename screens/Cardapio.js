@@ -1,26 +1,16 @@
 // screens/Cardapio.js
-import React, { useState } from "react";
-import {Text, FlatList, Image, Button, StyleSheet, View } from "react-native";
+import React, { useContext } from "react";
+import { Text, FlatList, Image, Button, StyleSheet, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { UserContext } from "../contexts/UserContext";
 
 export default function Cardapio() {
-  const [carrinho, setCarrinho] = useState([]);
-
-  const itens = [
-    { id: "1", nome: "Coxinha", descricao: "Frango com catupiry", preco: 5.0, imagem: "https://placehold.co/300x150?text=Coxinha" },
-    { id: "2", nome: "Pastel", descricao: "Carne bem recheado", preco: 6.5, imagem: "https://placehold.co/300x150?text=Pastel" },
-    { id: "3", nome: "Suco Natural", descricao: "Suco de laranja fresco", preco: 4.0, imagem: "https://placehold.co/300x150?text=Suco" },
-    { id: "4", nome: "Sanduíche", descricao: "Presunto e queijo", preco: 7.0, imagem: "https://placehold.co/300x150?text=Sanduiche" },
-    { id: "5", nome: "Refrigerante", descricao: "Lata gelada", preco: 5.5, imagem: "https://placehold.co/300x150?text=Refri" },
-    { id: "6", nome: "Bolo", descricao: "Bolo de chocolate", preco: 4.5, imagem: "https://placehold.co/300x150?text=Bolo" },
-  ];
+  const { cardapio, carrinho, setCarrinho } = useContext(UserContext);
+  const navigation = useNavigation();
 
   const adicionarCarrinho = (item) => {
-    setCarrinho((prev) => [...prev, item]);
+    setCarrinho([...carrinho, item]);
     alert(`${item.nome} adicionado ao carrinho!`);
-  };
-
-  const comprarItem = (item) => {
-    alert(`Você comprou: ${item.nome} por R$${item.preco.toFixed(2)}`);
   };
 
   const renderItem = ({ item }) => (
@@ -30,7 +20,7 @@ export default function Cardapio() {
       <Text style={styles.descricao}>{item.descricao}</Text>
       <Text style={styles.preco}>R${item.preco.toFixed(2)}</Text>
       <View style={styles.buttons}>
-        <Button title="Comprar" onPress={() => comprarItem(item)} />
+        <Button title="Comprar" onPress={() => navigation.navigate("DetalhesCompra", { item })} />
         <Button title="Carrinho" onPress={() => adicionarCarrinho(item)} />
       </View>
     </View>
@@ -40,14 +30,13 @@ export default function Cardapio() {
     <View style={styles.container}>
       <Text style={styles.title}>🍔 Cardápio da Cantina</Text>
       <FlatList
-        data={itens}
+        data={cardapio}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
-        numColumns={2} // mostra de dois em dois
-        //columnWrapperStyle={styles.row}
-        // showsVerticalScrollIndicator
+        numColumns={2}
         contentContainerStyle={styles.listContent}
       />
+      <Button title="Ver Carrinho" onPress={() => navigation.navigate("Carrinho")} />
     </View>
   );
 }
@@ -55,17 +44,8 @@ export default function Cardapio() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
   listContent: { paddingHorizontal: 10, paddingBottom: 24, flexGrow: 1 },
-  row: { justifyContent: "space-between" },
   title: { fontSize: 24, fontWeight: "bold", marginVertical: 20, textAlign: "center" },
-  card: {
-    flex: 1,
-    margin: 5,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 8,
-    backgroundColor: "#f9f9f9",
-  },
+  card: { flex: 1, margin: 5, padding: 10, borderWidth: 1, borderColor: "#ddd", borderRadius: 8, backgroundColor: "#f9f9f9" },
   image: { width: "100%", height: 120, borderRadius: 8, backgroundColor: "#eee" },
   nome: { fontSize: 16, fontWeight: "bold", marginTop: 5 },
   descricao: { fontSize: 13, color: "#555", marginVertical: 3 },

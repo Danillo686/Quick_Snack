@@ -3,9 +3,9 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
-import Cardapio from "../screens/Cardapio";
+import Home from "../screens/Cardapio";
+import Historico from "../screens/Historico";
 import Configuracao from "../screens/Configuracao";
-import Perfil from "../screens/Perfil"; // nova tela
 
 const Tab = createBottomTabNavigator();
 
@@ -15,18 +15,18 @@ export default function TabNavigator() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
-          if (route.name === "Cardápio") iconName = "fast-food";
-          else if (route.name === "Configuração") iconName = "settings";
-          else if (route.name === "Perfil") iconName = "person";
+          if (route.name === "Home") iconName = "home";
+          else if (route.name === "Histórico") iconName = "time";
+          else if (route.name === "Configurações") iconName = "settings";
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
       })}
     >
-      <Tab.Screen name="Cardápio" component={Cardapio} />
-      <Tab.Screen name="Configuração" component={Configuracao} />
-      <Tab.Screen name="Perfil" component={Perfil} />
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Histórico" component={Historico} />
+      <Tab.Screen name="Configurações" component={Configuracao} />
     </Tab.Navigator>
   );
 }
