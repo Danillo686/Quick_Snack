@@ -1,6 +1,6 @@
 // screens/LoginAdmin.js
 import React, { useState, useContext } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { UserContext } from "../contexts/UserContext";
 
 export default function LoginAdmin({ navigation }) {
@@ -40,20 +40,52 @@ export default function LoginAdmin({ navigation }) {
         onChangeText={setSenha}
         secureTextEntry
       />
-      <Button title="Entrar" onPress={handleLogin} />
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                <Text style={styles.buttonText}>Entrar</Text>
+              </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 20, backgroundColor: "#fff" },
-  title: { fontSize: 22, marginBottom: 20, textAlign: "center", fontWeight: "bold" },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    padding: 10,
-    marginBottom: 15,
-    borderRadius: 5,
-    backgroundColor: "#fafafa",
+  button:{
+    backgroundColor: "#6495ED",
+    width: "30%",          // largura menor
+    height: 50,
+    borderRadius: 7,
+    borderWidth: 3,
+    borderColor: "#4F4F4F",
+    marginBottom: 20,
+    alignSelf: "center",   // força o componente a ficar centralizado
+    justifyContent: "center",
+   },
+   buttonText: {
+    color: "#fff",
+    fontSize: 18,
+    fontWeight: "bold",
+    alignSelf: "center",   // força o componente a ficar centralizado
   },
+  container: { 
+    backgroundColor: "#FFDEAD", 
+    flex: 1,  
+    justifyContent: "center", 
+    padding: 20 },
+
+    title: {
+      marginBottom: 20, 
+      fontSize: 36,
+      fontWeight: "bold",
+      textAlign: "center" },
+ 
+      input: {
+        color:"#778899",
+        padding: 20,
+        backgroundColor: "rgba(224, 255, 255, 0.6)",
+        width: "30%",          // largura menor
+        height: 50,
+        borderRadius: 10,
+        marginBottom: 20,
+        alignSelf: "center",   // força o componente a ficar centralizado
+        justifyContent: "center",
+      },
 });
