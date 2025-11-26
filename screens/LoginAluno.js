@@ -23,11 +23,12 @@ export default function LoginAluno({ navigation }) {
 
       <TextInput
         style={[
-          styles.input,{ 
-          backgroundColor: themeColors.card,
-          borderColor: themeColors.border,
-          color: themeColors.inputText
-        },
+          styles.input,
+          {
+            backgroundColor: themeColors.card,
+            borderColor: themeColors.border,
+            color: themeColors.inputText,
+          },
         ]}
         placeholder="Nome"
         placeholderTextColor={themeColors.border}
@@ -38,7 +39,11 @@ export default function LoginAluno({ navigation }) {
       <TextInput
         style={[
           styles.input,
-          { backgroundColor: themeColors.card, borderColor: themeColors.border, color: themeColors.inputText },
+          {
+            backgroundColor: themeColors.card,
+            borderColor: themeColors.border,
+            color: themeColors.inputText,
+          },
         ]}
         placeholder="Matrícula"
         placeholderTextColor={themeColors.border}
@@ -49,7 +54,7 @@ export default function LoginAluno({ navigation }) {
       <TouchableOpacity
         style={[
           styles.button,
-          { backgroundColor: themeColors.highlight, borderColor: themeColors.border },
+          { backgroundColor: themeColors.loginAlunoButton, borderColor: themeColors.border },
         ]}
         onPress={handleLogin}
       >

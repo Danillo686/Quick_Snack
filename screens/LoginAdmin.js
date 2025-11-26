@@ -64,17 +64,8 @@ export default function LoginAdmin({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1,
-    justifyContent: "center",
-    padding: 20
-  },
-  title: {
-    marginBottom: 20,
-    fontSize: 32, 
-    fontWeight: "bold", 
-    textAlign: "center"
-  },
+  container: { flex: 1, justifyContent: "center", padding: 20 },
+  title: { marginBottom: 20, fontSize: 32, fontWeight: "bold", textAlign: "center" },
   input: {
     padding: 15,
     width: "70%",

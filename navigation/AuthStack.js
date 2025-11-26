@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 export default function AuthStack() {
   return (
     <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+      <Stack.Screen  name="Home" component={Home} options={{ headerShown: false }} />
       <Stack.Screen name="LoginAluno" component={LoginAluno} />
       <Stack.Screen name="LoginAdmin" component={LoginAdmin} />
     </Stack.Navigator>
