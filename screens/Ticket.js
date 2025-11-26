@@ -1,27 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
+import { UserContext } from "../contexts/UserContext";
 
 export default function Ticket({ route }) {
   const { codigoPedido, total } = route.params;
+  const { themeColors } = useContext(UserContext);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>🎟️ Ticket Digital</Text>
-      <Text style={styles.subtitle}>Apresente este QR Code na cantina</Text>
+    <View style={[styles.container, { backgroundColor: themeColors.background }]}>
+      <Text style={[styles.title, { color: themeColors.text }]}>🎟️ Ticket Digital</Text>
+      <Text style={[styles.subtitle, { color: themeColors.text }]}>
+        Apresente este QR Code na cantina
+      </Text>
 
       <View style={styles.qrContainer}>
         <QRCode value={codigoPedido} size={200} />
       </View>
 
-      <Text style={styles.info}>Pedido: {codigoPedido}</Text>
-      <Text style={styles.info}>Total pago: R${total.toFixed(2)}</Text>
+      <Text style={[styles.info, { color: themeColors.text }]}>Pedido: {codigoPedido}</Text>
+      <Text style={[styles.info, { color: themeColors.text }]}>
+        Total pago: R${total.toFixed(2)}
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#fff" },
+  container: { flex: 1, justifyContent: "center", alignItems: "center" },
   title: { fontSize: 24, fontWeight: "bold", marginBottom: 10 },
   subtitle: { fontSize: 16, marginBottom: 20 },
   qrContainer: { marginVertical: 20 },

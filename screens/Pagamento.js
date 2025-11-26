@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { View, Text, Button, StyleSheet, Alert } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { UserContext } from "../contexts/UserContext";
 
 export default function Pagamento({ navigation }) {
-  const { carrinho, setCarrinho } = useContext(UserContext);
+  const { carrinho, setCarrinho, adicionarCompra, themeColors } = useContext(UserContext);
   const [metodo, setMetodo] = useState(null);
+
   const total = carrinho.reduce((acc, item) => acc + item.preco, 0);
 
   const finalizarPagamento = () => {
@@ -19,46 +20,63 @@ export default function Pagamento({ navigation }) {
       Alert.alert("Cartão de Crédito", "Pagamento aprovado com cartão fictício!");
     }
 
-    // gera código único do pedido
     const codigoPedido = `pedido-${Date.now()}`;
-
-    // limpa carrinho
+    const compra = { codigo: codigoPedido, total, metodo, data: new Date().toLocaleString() };
+    adicionarCompra(compra);
     setCarrinho([]);
-
-    // navega para a tela de Ticket Digital com QR Code
     navigation.navigate("Ticket", { codigoPedido, total });
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>💳 Pagamento</Text>
-      <Text style={styles.total}>Total: R${total.toFixed(2)}</Text>
+    <View style={[styles.container, { backgroundColor: themeColors.background }]}>
+      <Text style={[styles.title, { color: themeColors.text }]}>💳 Pagamento</Text>
+      <Text style={[styles.total, { color: themeColors.text }]}>Total: R${total.toFixed(2)}</Text>
 
-      <Button title="Pagar com PIX" onPress={() => setMetodo("PIX")} />
-      <Button title="Pagar com Cartão" onPress={() => setMetodo("Cartão")} />
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: themeColors.buyButton }]}
+        onPress={() => setMetodo("PIX")}
+      >
+        <Text style={[styles.buttonText, { color: themeColors.text }]}>Pagar com PIX</Text>
+      </TouchableOpacity>
 
-      <View style={{ marginTop: 20 }}>
-        <Button title="Finalizar" onPress={finalizarPagamento} />
-      </View>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: themeColors.cartButton }]}
+        onPress={() => setMetodo("Cartão")}
+      >
+        <Text style={[styles.buttonText, { color: themeColors.text }]}>Pagar com Cartão</Text>
+      </TouchableOpacity>
 
-      {/* Botão de voltar para o Cardápio */}
-      <View style={{ marginTop: 20 }}>
-        <Button
-          title="Voltar para o Cardápio"
-          onPress={() =>
-            navigation.navigate("Main", {
-              screen: "Principal",
-              params: { screen: "Cardápio" }
-            })
-          }
-        />
-      </View>
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: themeColors.highlight }]}
+        onPress={finalizarPagamento}
+      >
+        <Text style={[styles.buttonText, { color: themeColors.text }]}>Finalizar</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={[styles.button, { backgroundColor: themeColors.card }]}
+        onPress={() =>
+          navigation.navigate("Main", {
+            screen: "Principal",
+            params: { screen: "Cardápio" },
+          })
+        }
+      >
+        <Text style={[styles.buttonText, { color: themeColors.text }]}>Voltar para o Cardápio</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#fff", justifyContent: "center" },
+  container: { flex: 1, padding: 20, justifyContent: "center" },
   title: { fontSize: 22, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
   total: { fontSize: 18, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
+  button: {
+    paddingVertical: 12,
+    borderRadius: 8,
+    marginVertical: 8,
+    alignItems: "center",
+  },
+  buttonText: { fontSize: 16, fontWeight: "bold" },
 });

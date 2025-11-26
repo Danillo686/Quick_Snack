@@ -1,5 +1,5 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useContext } from "react";
+import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import AuthStack from "./AuthStack";
@@ -8,13 +8,25 @@ import DetalhesCompra from "../screens/DetalhesCompra";
 import Carrinho from "../screens/Carrinho";
 import Pagamento from "../screens/Pagamento";
 import Ticket from "../screens/Ticket";
+import { UserContext } from "../contexts/UserContext";
 
 const Stack = createStackNavigator();
 
 export default function AppNavigator() {
+  const { tema, themeColors } = useContext(UserContext);
+
+  // Tema do React Navigation
+  const navigationTheme = tema === "light" ? DefaultTheme : DarkTheme;
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Auth">
+    <NavigationContainer theme={navigationTheme}>
+      <Stack.Navigator
+        initialRouteName="Auth"
+        screenOptions={{
+          headerStyle: { backgroundColor: themeColors.background },
+          headerTintColor: themeColors.text,
+        }}
+      >
         {/* Fluxo de autenticação */}
         <Stack.Screen name="Auth" component={AuthStack} options={{ headerShown: false }} />
 
@@ -23,12 +35,8 @@ export default function AppNavigator() {
 
         {/* Telas extras */}
         <Stack.Screen name="DetalhesCompra" component={DetalhesCompra} />
-
-        
         <Stack.Screen name="Carrinho" component={Carrinho} />
-
         <Stack.Screen name="Pagamento" component={Pagamento} />
-
         <Stack.Screen name="Ticket" component={Ticket} />
       </Stack.Navigator>
     </NavigationContainer>
