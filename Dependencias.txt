@@ -12,4 +12,5 @@ npm install @react-navigation/native @react-navigation/stack @react-navigation/b
 npm install react-native-screens react-native-safe-area-context react-native-gesture-handler react-native-reanimated
 npm install react-native-qrcode-svg
 npm install @react-native-async-storage/async-storage
+npx expo start --tunnel
 --------------------------------------------------------------------------------------------------------------------------------------------------
