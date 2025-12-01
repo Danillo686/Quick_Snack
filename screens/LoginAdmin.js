@@ -68,10 +68,9 @@ const styles = StyleSheet.create({
   title: { marginBottom: 20, fontSize: 32, fontWeight: "bold", textAlign: "center" },
   input: {
     padding: 15,
-    width: "70%",
+    width: "80%",
     height: 50,
     borderRadius: 10,
-    borderWidth: 1,
     marginBottom: 20,
     alignSelf: "center",
   },
@@ -84,5 +83,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 10,
   },
-  buttonText: { fontSize: 18, fontWeight: "bold", textAlign: "center" },
+  buttonText: { fontSize: 18, fontWeight: "bold", textAlign: "center",},
 });

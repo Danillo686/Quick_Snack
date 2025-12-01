@@ -8,26 +8,41 @@ export default function Home({ navigation }) {
   return (
     <View style={[styles.container, { backgroundColor: themeColors.background }]}>
       {/* Quick Snack com a mesma cor do botão Login Aluno */}
-      <Text style={[styles.logo, { color: themeColors.loginAlunoButton }]}>Quick Snack</Text>
+      <Text style={[styles.logo, { color: themeColors.loginAlunoButton }]}>
+        Quick Snack
+      </Text>
 
+      {/* Botão Login Aluno */}
       <TouchableOpacity
         style={[
           styles.button,
-          { backgroundColor: themeColors.loginAlunoButton, borderColor: themeColors.border },
+          { borderWidth: 3,
+            backgroundColor: themeColors.loginAlunoButton,
+            borderColor: themeColors.border, // cor da borda dinâmica
+          },
         ]}
         onPress={() => navigation.navigate("LoginAluno")}
       >
-        <Text style={[styles.buttonText, { color: themeColors.text }]}>Login Aluno</Text>
+        <Text style={[styles.buttonText, { color: themeColors.text }]}>
+          Login Aluno
+        </Text>
       </TouchableOpacity>
 
+      {/* Botão Login Admin */}
       <TouchableOpacity
         style={[
           styles.button,
-          { backgroundColor: themeColors.loginAdminButton, borderColor: themeColors.border },
+          { 
+            backgroundColor: themeColors.loginAdminButton,
+            borderColor: themeColors.border, // cor da borda dinâmica
+            borderWidth: 3,
+          },
         ]}
         onPress={() => navigation.navigate("LoginAdmin")}
       >
-        <Text style={[styles.buttonText, { color: themeColors.text }]}>Login Admin</Text>
+        <Text style={[styles.buttonText, { color: themeColors.text,  }]}>
+          Login Admin
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -49,7 +64,7 @@ const styles = StyleSheet.create({
     width: "40%",
     height: 50,
     borderRadius: 7,
-    borderWidth: 2,
+    borderWidth: 2, // espessura da borda
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
@@ -57,5 +72,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 18,
     fontWeight: "bold",
+    
   },
 });

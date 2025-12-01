@@ -19,15 +19,19 @@ export default function LoginAluno({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: themeColors.background }]}>
-      <Text style={[styles.title, { color: themeColors.text }]}>Login do Aluno</Text>
+      <Text style={[styles.title, { color: themeColors.text, fontFamily: themeColors.fontFamily }]}>
+        Login do Aluno
+      </Text>
 
       <TextInput
         style={[
           styles.input,
-          {
-            backgroundColor: themeColors.card,
+           {
+            placeholderTextColor: "#4e4b4b",
+            backgroundColor: themeColors.card, // já vem com opacidade do theme
             borderColor: themeColors.border,
-            color: themeColors.inputText,
+            color: themeColors.text,
+            fontFamily: themeColors.fontFamily,
           },
         ]}
         placeholder="Nome"
@@ -39,10 +43,11 @@ export default function LoginAluno({ navigation }) {
       <TextInput
         style={[
           styles.input,
-          {
+          { 
             backgroundColor: themeColors.card,
             borderColor: themeColors.border,
-            color: themeColors.inputText,
+            color: themeColors.text,
+            fontFamily: themeColors.fontFamily,
           },
         ]}
         placeholder="Matrícula"
@@ -58,7 +63,10 @@ export default function LoginAluno({ navigation }) {
         ]}
         onPress={handleLogin}
       >
-        <Text style={[styles.buttonText, { color: themeColors.text }]}>Entrar</Text>
+        {/* Texto com cor fixa independente do theme */}
+        <Text style={[styles.buttonText, { color: themeColors.text }]}>
+          Entrar
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -66,13 +74,12 @@ export default function LoginAluno({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "center", padding: 20 },
-  title: { marginBottom: 20, fontSize: 32, fontWeight: "bold", textAlign: "center" },
+  title: { marginBottom: 20, fontSize: 36, fontWeight: "bold", textAlign: "center", },
   input: {
     padding: 15,
-    width: "70%",
+    width: "80%",
     height: 50,
     borderRadius: 10,
-    borderWidth: 1,
     marginBottom: 20,
     alignSelf: "center",
   },
@@ -85,5 +92,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 10,
   },
-  buttonText: { fontSize: 18, fontWeight: "bold", textAlign: "center" },
+  buttonText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 });
