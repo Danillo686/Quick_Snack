@@ -31,69 +31,124 @@ export default function PagamentoUnico({ navigation}) {
 
   return (
     <View style={[styles.container, { backgroundColor: themeColors.background }]}>
-
-      <Text style={[styles.title, { color: themeColors.text }]}>💳 Pagamento</Text>
-      <Text style={styles.title}> Produto: {item.nome}</Text>
-      <Text style={[styles.total, { color: themeColors.text }]}>Total: R${item.preco.toFixed(2)}</Text>
-
-<TouchableOpacity
-  style={[
-    styles.button,
-    { backgroundColor: "orange" },
-    metodo === "PIX" ? styles.ButtonSelecionado : styles.buttonText,
-  ]}
-  onPress={() => setMetodoLocal("PIX")}
->
-  <Text style={[styles.buttonText, { color: themeColors.text }]}>
-    {metodo === "PIX" ? "PIX Selecionado" : "Pagar com PIX"}
-  </Text>
-</TouchableOpacity>
-      <TouchableOpacity
-        style={[
-          styles.button,
-          { backgroundColor: themeColors.cartButton },
-          metodo === "Cartão" ? styles.ButtonSelecionado : styles.buttonText,
-        ]}
-        onPress={() => setMetodoLocal("Cartão")}
-      >
-        <Text style={[styles.buttonText, { color: themeColors.text }]}>
-          {metodo === "Cartão" ? "Cartão Selecionado" : "Pagar com Cartão"}
+      <View style={[styles.card, { backgroundColor: themeColors.card }]}>
+        <Text style={[styles.title, { color: themeColors.text }]}>💳 Pagamento</Text>
+        <Text style={[styles.subtitle, { color: themeColors.text }]}>Produto: {item.nome}</Text>
+        <Text style={[styles.total, { color: themeColors.highlight }]}>
+          Total: R${item.preco.toFixed(2)}
         </Text>
-      </TouchableOpacity>
 
+        <TouchableOpacity
+          style={[
+            styles.button,
+            { backgroundColor: themeColors.cartButton },
+            metodo === "PIX" && { borderColor: themeColors.highlight, borderWidth: 2 },
+          ]}
+          onPress={() => setMetodoLocal("PIX")}
+        >
+          <Text style={[styles.buttonText, { color: themeColors.text }]}>
+            {metodo === "PIX" ? "PIX Selecionado ✅" : "Pagar com PIX"}
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.button, { backgroundColor: themeColors.highlight }]}
-        onPress={finalizarPagamento}
-      >
-        <Text style={[styles.buttonText, { color: themeColors.text }]}>Finalizar</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.button,
+            { backgroundColor: themeColors.buyButton },
+            metodo === "Cartão" && { borderColor: themeColors.highlight, borderWidth: 2 },
+          ]}
+          onPress={() => setMetodoLocal("Cartão")}
+        >
+          <Text style={[styles.buttonText, { color: themeColors.text }]}>
+            {metodo === "Cartão" ? "Cartão Selecionado ✅" : "Pagar com Cartão"}
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.button, { backgroundColor: themeColors.card }]}
-        onPress={() =>
-          navigation.navigate("Main", {
-            screen: "Principal",
-            params: { screen: "Cardápio" },
-          })
-        }
-      >
-        <Text style={[styles.buttonText, { color: themeColors.text }]}>Voltar para o Cardápio</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.buttonFinalizar, { backgroundColor: themeColors.highlight }]}
+          onPress={finalizarPagamento}
+        >
+          <Text style={[styles.buttonText, { color: themeColors.background }]}>Finalizar</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.buttonVoltar, { backgroundColor: themeColors.border }]}
+          onPress={() =>
+            navigation.navigate("Main", {
+              screen: "Principal",
+              params: { screen: "Cardápio" },
+            })
+          }
+        >
+          <Text style={[styles.buttonText, { color: themeColors.text }]}>Voltar para o Cardápio</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, justifyContent: "center" },
-  title: { fontSize: 22, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
-  total: { fontSize: 18, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 24,
+  },
+  card: {
+    borderRadius: 20,
+    padding: 24,
+    width: "90%",
+    alignItems: "center",
+
+    // sombra iOS
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+
+    // sombra Android
+    elevation: 12,
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: "bold",
+    marginBottom: 12,
+    textAlign: "center",
+  },
+  subtitle: {
+    fontSize: 18,
+    marginBottom: 8,
+    textAlign: "center",
+  },
+  total: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+  },
   button: {
     paddingVertical: 12,
-    borderRadius: 8,
+    borderRadius: 12,
     marginVertical: 8,
     alignItems: "center",
+    width: "100%",
   },
-  buttonText: { fontSize: 16, fontWeight: "bold" },
-  ButtonSelecionado: { backgroundColor: "#3b7a3dff" },
+  buttonFinalizar: {
+    paddingVertical: 12,
+    borderRadius: 12,
+    marginVertical: 12,
+    alignItems: "center",
+    width: "100%",
+  },
+  buttonVoltar: {
+    paddingVertical: 12,
+    borderRadius: 12,
+    marginVertical: 8,
+    alignItems: "center",
+    width: "100%",
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });

@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   listContent: { paddingHorizontal: 10,
      paddingBottom: 24,
       flexGrow: 1 },
-  title: { fontSize: 35,
+  title: { fontSize: 25,
      fontWeight: "bold",
       marginVertical: 20,
        textAlign: "center" },
