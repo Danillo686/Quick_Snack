@@ -8,10 +8,10 @@ export default function LoginAluno({ navigation }) {
   const [matricula, setMatricula] = useState("");
 
   const handleLogin = () => {
-   /* if (!nome || !matricula) {
+   if (!nome || !matricula) {
       Alert.alert("Aviso", "Por favor, preencha nome e matrícula.");
       return;
-    } */
+    }
 
     salvarUsuario({ tipo: "aluno", nome, matricula });
     navigation.replace("Main");
@@ -42,7 +42,7 @@ export default function LoginAluno({ navigation }) {
       <TextInput
         style={[
           styles.input,
-          {
+          { 
             backgroundColor: themeColors.card,
             borderColor: themeColors.border,
             color: themeColors.inputText,
@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 50,
     borderRadius: 10,
-    borderWidth: 1,
     marginBottom: 20,
     alignSelf: "center",
   },

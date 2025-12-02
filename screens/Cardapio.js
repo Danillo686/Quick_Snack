@@ -48,7 +48,6 @@ export default function Cardapio() {
         numColumns={2}
         contentContainerStyle={styles.listContent}
       />
-
       <TouchableOpacity
         style={[
           styles.verCarrinho,
@@ -58,6 +57,7 @@ export default function Cardapio() {
       >
         <Text style={[styles.buttonText, { color: themeColors.text, fontSize: 16 }]}>Ver Carrinho</Text>
       </TouchableOpacity>
+      
     </View>
   );
 }
