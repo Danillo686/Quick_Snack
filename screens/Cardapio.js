@@ -22,7 +22,7 @@ export default function Cardapio() {
       <View style={styles.buttons}>
         <TouchableOpacity
           style={[styles.button, { backgroundColor: themeColors.buyButton, borderColor: themeColors.border }]}
-          onPress={() => navigation.navigate("DetalhesCompra", { item })}
+          onPress={() => navigation.navigate("PagamentoUnico", { item })}
         >
           <Text style={[styles.buttonText, { color: themeColors.text }]}>Comprar</Text>
         </TouchableOpacity>
@@ -50,10 +50,13 @@ export default function Cardapio() {
       />
 
       <TouchableOpacity
-        style={[styles.button, { backgroundColor: themeColors.highlight, borderColor: themeColors.border, alignSelf: "center", marginTop: 10 }]}
+        style={[
+          styles.verCarrinho,
+          { backgroundColor: themeColors.highlight, borderColor: themeColors.border }
+        ]}
         onPress={() => navigation.navigate("Carrinho")}
       >
-        <Text style={[styles.buttonText, { color: themeColors.text }]}>Ver Carrinho</Text>
+        <Text style={[styles.buttonText, { color: themeColors.text, fontSize: 16 }]}>Ver Carrinho</Text>
       </TouchableOpacity>
     </View>
   );
@@ -61,20 +64,33 @@ export default function Cardapio() {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  listContent: { paddingHorizontal: 10, paddingBottom: 24, flexGrow: 1 },
-  title: { fontSize: 24, fontWeight: "bold", marginVertical: 20, textAlign: "center" },
-  card: {
-    flex: 1,
-    margin: 5,
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 8,
-  },
-  image: { width: "100%", height: 120, borderRadius: 8, backgroundColor: "#eee" },
-  nome: { fontSize: 16, fontWeight: "bold", marginTop: 5 },
-  descricao: { fontSize: 13, marginVertical: 3 },
-  preco: { fontSize: 14, fontWeight: "bold", marginBottom: 5 },
-  buttons: { flexDirection: "row", justifyContent: "space-between", marginTop: 5 },
+  listContent: { paddingHorizontal: 10,
+     paddingBottom: 24,
+      flexGrow: 1 },
+  title: { fontSize: 35,
+     fontWeight: "bold",
+      marginVertical: 20,
+       textAlign: "center" },
+  card: { flex: 1,
+     margin: 5,
+      padding: 10,
+       borderWidth: 1,
+        borderRadius: 8 },
+  image: { width: "100%",
+     height: 120,
+      borderRadius: 8,
+       backgroundColor: "#eee" },
+  nome: { fontSize: 16,
+     fontWeight: "bold",
+      marginTop: 5 },
+  descricao: { fontSize: 13,
+     marginVertical: 3 },
+  preco: { fontSize: 14,
+     fontWeight: "bold",
+      marginBottom: 5 },
+  buttons: { flexDirection: "row",
+     justifyContent: "space-between",
+      marginTop: 5 },
   button: {
     flex: 1,
     marginHorizontal: 5,
@@ -84,4 +100,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: { fontSize: 14, fontWeight: "bold" },
+  verCarrinho: {
+    width: "50%",
+    height: 40,
+    borderRadius: 10,
+    borderWidth: 3,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    marginTop: 10,
+  },
 });

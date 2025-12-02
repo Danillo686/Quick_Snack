@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "reac
 import { UserContext } from "../contexts/UserContext";
 
 export default function LoginAdmin({ navigation }) {
-  const { setUser, themeColors } = useContext(UserContext);
+  const { salvarUsuario, themeColors } = useContext(UserContext);
   const [usuario, setUsuario] = useState("");
   const [senha, setSenha] = useState("");
 
@@ -14,7 +14,7 @@ export default function LoginAdmin({ navigation }) {
     }
 
     if (usuario === "admin" && senha === "1234") {
-      setUser({ tipo: "admin", usuario });
+      salvarUsuario({ tipo: "admin", usuario });
       Alert.alert("Sucesso", "Login realizado com sucesso!");
       navigation.replace("Main");
     } else {
@@ -65,10 +65,11 @@ export default function LoginAdmin({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "center", padding: 20 },
-  title: { marginBottom: 20, fontSize: 32, fontWeight: "bold", textAlign: "center" },
+    title: { marginBottom: 20, fontSize: 32, fontWeight: "bold", textAlign: "center" },
   input: {
     padding: 15,
     width: "70%",
+    width: "80%",
     height: 50,
     borderRadius: 10,
     borderWidth: 1,
@@ -85,4 +86,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: { fontSize: 18, fontWeight: "bold", textAlign: "center" },
+  buttonText: { fontSize: 18, fontWeight: "bold", textAlign: "center",},
 });

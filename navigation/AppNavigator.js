@@ -8,7 +8,9 @@ import DetalhesCompra from "../screens/DetalhesCompra";
 import Carrinho from "../screens/Carrinho";
 import Pagamento from "../screens/Pagamento";
 import Ticket from "../screens/Ticket";
+import PagamentoUnico from "../screens/PagamentoUnico";
 import { UserContext } from "../contexts/UserContext";
+import TicketUnico from "../screens/TicketUnico";
 
 const Stack = createStackNavigator();
 
@@ -38,6 +40,8 @@ export default function AppNavigator() {
         <Stack.Screen name="Carrinho" component={Carrinho} />
         <Stack.Screen name="Pagamento" component={Pagamento} />
         <Stack.Screen name="Ticket" component={Ticket} />
+        <Stack.Screen name="PagamentoUnico" component={PagamentoUnico} />
+        <Stack.Screen name="TicketUnico" component={TicketUnico} />
       </Stack.Navigator>
     </NavigationContainer>
   );
