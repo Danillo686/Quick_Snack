@@ -2,15 +2,16 @@ import React, { useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import QRCode from "react-native-qrcode-svg";
 import { UserContext } from "../contexts/UserContext";
+import { useRoute } from "@react-navigation/native";
 
-export default function TicketUnico({ route }) {
+export default function TicketUnico() {
+  const route = useRoute();
   const { themeColors } = useContext(UserContext);
-  const { codigoPedido, total} = route.params;
-  const { metodo } = route.params;
+  const { codigoPedido, total, metodo} = route.params;
   return (
     <View style={[styles.container, { backgroundColor: themeColors.background }]}>
       <Text style={[styles.title, { color: themeColors.text }]}>🎟️ Ticket Digital</Text>
-      <Text>Forma de pagamento: {metodo}</Text>
+      <Text style={[styles.subtitle, { color: themeColors.text }]}>Forma de pagamento: {metodo}</Text>
       <Text style={[styles.subtitle, { color: themeColors.text }]}>
         Apresente este QR Code na cantina
       </Text>

@@ -6,6 +6,7 @@ import Perfil from "../screens/Perfil";
 import SobreApp from "../screens/SobreApp";
 import Carrinho from "../screens/Carrinho";
 import { UserContext } from "../contexts/UserContext";
+import LoginAluno from "../screens/LoginAluno";
 
 const Drawer = createDrawerNavigator();
 
@@ -27,6 +28,7 @@ export default function DrawerNavigator() {
       <Drawer.Screen name="Carrinho" component={Carrinho} />
       <Drawer.Screen name="Perfil do Aluno" component={Perfil} />
       <Drawer.Screen name="Sobre o App" component={SobreApp} />
+      <Drawer.Screen name="Sair" component={LoginAluno} />
     </Drawer.Navigator>
   );
 }

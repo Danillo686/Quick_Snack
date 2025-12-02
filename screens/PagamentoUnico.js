@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { UserContext } from "../contexts/UserContext";
 import { useRoute } from "@react-navigation/native";
 
-export default function PagamentoUnico({ navigation }) {
+export default function PagamentoUnico({ navigation}) {
   const route = useRoute();
   const { item } = route.params; 
   const { carrinho, setCarrinho, adicionarCompra, themeColors } = useContext(UserContext);
@@ -26,7 +26,7 @@ export default function PagamentoUnico({ navigation }) {
     const compra = { codigo: codigoPedido, total, metodo, data: new Date().toLocaleString() };
     adicionarCompra(compra);
     setCarrinho([]);
-    navigation.navigate("TicketUnico", { codigoPedido, total });
+    navigation.navigate("TicketUnico", { codigoPedido, total, metodo});
   };
 
   return (
