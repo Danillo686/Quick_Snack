@@ -46,29 +46,28 @@ onPress={() => navigation.navigate("LoginAdmin")}
 
 const styles = StyleSheet.create({
 container: {
-flex: 1,
-alignItems: "center",
-justifyContent: "center",
-padding: 20,
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 20,
 },
 logo: {
-fontSize: 36,
-fontWeight: "bold",
-marginBottom: 50,
+  fontSize: 36,
+  fontWeight: "bold",
+  marginBottom: 50,
 },
 button: {
-width: "40%",
-height: 50,
-borderRadius: 7,
-    borderWidth: 2,
-    borderWidth: 2, // espessura da borda
-alignItems: "center",
-justifyContent: "center",
-marginBottom: 20,
+  width: "40%",
+  height: 50,
+  borderRadius: 7,
+  borderWidth: 2,
+  borderWidth: 2, // espessura da borda
+  alignItems: "center",
+  justifyContent: "center",
+  marginBottom: 20,
 },
 buttonText: {
-fontSize: 18,
-fontWeight: "bold",
-    
+  fontSize: 18,
+  fontWeight: "bold",
 },
 });

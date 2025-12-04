@@ -27,10 +27,35 @@ export default function DetalhesCompra({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, alignItems: "center", backgroundColor: "#fff" },
-  title: { fontSize: 22, fontWeight: "bold", marginBottom: 20 },
-  image: { width: 300, height: 150, borderRadius: 8, marginBottom: 20 },
-  nome: { fontSize: 20, fontWeight: "bold" },
-  descricao: { fontSize: 16, color: "#555", marginVertical: 10 },
-  preco: { fontSize: 18, fontWeight: "bold", marginBottom: 20 },
+  container: {
+    flex: 1,
+    padding: 20,
+    alignItems: "center",
+    backgroundColor: "#fff",
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  image: {
+    width: 300,
+    height: 150,
+    borderRadius: 8,
+    marginBottom: 20,
+  },
+  nome: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  descricao: {
+    fontSize: 16,
+    color: "#555",
+    marginVertical: 10,
+  },
+  preco: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
 });
