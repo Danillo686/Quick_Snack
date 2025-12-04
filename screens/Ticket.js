@@ -46,7 +46,12 @@ export default function Ticket({ route }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center", padding: 24 },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 24,
+  },
   card: {
     borderRadius: 20,
     padding: 24,
@@ -62,8 +67,16 @@ const styles = StyleSheet.create({
     // sombra Android
     elevation: 12,
   },
-  title: { fontSize: 26, fontWeight: "bold", marginBottom: 12 },
-  subtitle: { fontSize: 16, marginBottom: 20, textAlign: "center" },
+  title: {
+    fontSize: 26,
+    fontWeight: "bold",
+    marginBottom: 12,
+  },
+  subtitle: {
+    fontSize: 16,
+    marginBottom: 20,
+    textAlign: "center",
+  },
   qrContainer: {
     padding: 20,
     borderRadius: 16,

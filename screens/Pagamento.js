@@ -88,7 +88,12 @@ export default function Pagamento({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center", padding: 20 },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
   card: {
     width: "95%",
     borderRadius: 18,
@@ -104,8 +109,18 @@ const styles = StyleSheet.create({
     // sombra Android
     elevation: 8,
   },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
-  total: { fontSize: 20, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  total: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+  },
   button: {
     paddingVertical: 12,
     borderRadius: 10,
@@ -127,5 +142,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
   },
-  buttonText: { fontSize: 16, fontWeight: "bold" },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });

@@ -71,9 +71,23 @@ export default function LoginAluno({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", padding: 20 },
-  title: { marginBottom: 20, fontSize: 32, fontWeight: "bold", textAlign: "center" },
-  title: { marginBottom: 20, fontSize: 36, fontWeight: "bold", textAlign: "center", },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    padding: 20,
+  },
+  title: {
+    marginBottom: 20,
+    fontSize: 32,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  title: {
+    marginBottom: 20,
+    fontSize: 36,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   input: {
     padding: 15,
     width: "70%",
@@ -92,7 +106,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 10,
   },
-  buttonText: { fontSize: 18, fontWeight: "bold", textAlign: "center" },
+  buttonText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
   buttonText: {
     fontSize: 18,
     fontWeight: "bold",

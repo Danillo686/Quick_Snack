@@ -41,14 +41,29 @@ export default function Historico() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
-  title: { fontSize: 22, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
-  empty: { fontSize: 16, textAlign: "center", marginTop: 20 },
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  empty: {
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 20,
+  },
   item: {
     padding: 15,
     marginBottom: 10,
     borderWidth: 1,
     borderRadius: 8,
   },
-  codigo: { fontWeight: "bold", marginBottom: 5 },
+  codigo: {
+    fontWeight: "bold",
+    marginBottom: 5,
+  },
 });

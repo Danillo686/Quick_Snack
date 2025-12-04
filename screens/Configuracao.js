@@ -26,8 +26,17 @@ export default function Configuracao() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center", padding: 20 },
-  text: { fontSize: 20, fontWeight: "bold", marginBottom: 10 },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
   button: {
     marginTop: 20,
     paddingVertical: 12,
@@ -37,5 +46,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  buttonText: { fontSize: 16, fontWeight: "bold" },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });

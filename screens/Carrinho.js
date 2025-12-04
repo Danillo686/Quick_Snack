@@ -86,7 +86,12 @@ export default function Carrinho() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center", padding: 20 },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
   card: {
     width: "95%",
     borderRadius: 16,
@@ -97,8 +102,17 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 6,
   },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20, textAlign: "center" },
-  empty: { fontSize: 16, textAlign: "center", marginTop: 20 },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  empty: {
+    fontSize: 16,
+    textAlign: "center",
+    marginTop: 20,
+  },
   item: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -106,8 +120,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     alignItems: "center",
   },
-  itemText: { fontSize: 16 },
-  total: { fontSize: 20, fontWeight: "bold", marginVertical: 20, textAlign: "center" },
+  itemText: {
+    fontSize: 16,
+  },
+  total: {
+    fontSize: 20, 
+    fontWeight: "bold",
+    marginVertical: 20,
+    textAlign: "center",
+  },
   actionButton: {
     paddingVertical: 14,
     borderRadius: 12,
@@ -119,5 +140,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 8,
   },
-  buttonText: { fontSize: 16, fontWeight: "bold" },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
