@@ -79,14 +79,33 @@ export default function Cardapio() {
 
   return (
     <View style={[styles.container, { backgroundColor: themeColors.background }]}>
+      {/* Cabeçalho */}
       <View style={styles.header}>
-        <Text style={[styles.title, { color: themeColors.text }]}>🍔 Cardápio da Cantina</Text>
-        {user?.tipo === "admin" && (
-          <TouchableOpacity onPress={() => setEditMode(!editMode)}>
-            <Ionicons name="brush" size={28} color={themeColors.highlight} />
-          </TouchableOpacity>
-        )}
-      </View>
+  <Text style={[styles.title, { color: themeColors.text }]}>🍔 Cardápio da Cantina</Text>
+
+  {user?.tipo === "admin" ? (
+    <View style={styles.adminHeader}>
+      <Text style={[styles.adminLabel, { color: themeColors.text }]}>Administrador</Text>
+      <TouchableOpacity onPress={() => setEditMode(!editMode)}>
+        <Ionicons name="brush" size={24} color={themeColors.highlight} />
+      </TouchableOpacity>
+    </View>
+  ) : (
+    <View style={styles.userInfo}>
+      {user?.foto ? (
+        <Image source={{ uri: user.foto }} style={[styles.userImage, { borderColor: themeColors.highlight }]} />
+      ) : (
+        <View style={[styles.iconWrapper, { borderColor: themeColors.highlight }]}>
+          <Ionicons name="person-circle" size={40} color={themeColors.highlight} />
+        </View>
+      )}
+      <Text style={[styles.userName, { color: themeColors.text }]}>
+        {user?.nome ? user.nome : "Aluno"}
+      </Text>
+    </View>
+  )}
+</View>
+
 
       <FlatList
         data={cardapio}
@@ -114,50 +133,73 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    marginVertical: 10,
+  },
+  adminHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  adminLabel: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  userInfo: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  userImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  userName: {
+    fontSize: 16,
+    fontWeight: "bold",
   },
   listContent: {
     paddingHorizontal: 10,
     paddingBottom: 24,
-    flexGrow: 1
+    flexGrow: 1,
   },
   title: {
     fontSize: 25,
     fontWeight: "bold",
-    marginVertical: 20,
-    textAlign: "center"
+    textAlign: "center",
   },
   card: {
     flex: 1,
     margin: 5,
     padding: 10,
     borderWidth: 1,
-    borderRadius: 8
+    borderRadius: 8,
   },
   image: {
     width: "100%",
     height: 120,
     borderRadius: 8,
-    backgroundColor: "#eee"
+    backgroundColor: "#eee",
   },
   nome: {
     fontSize: 16,
     fontWeight: "bold",
-    marginTop: 5
+    marginTop: 5,
   },
   descricao: {
     fontSize: 13,
-    marginVertical: 3
+    marginVertical: 3,
   },
   preco: {
     fontSize: 14,
     fontWeight: "bold",
-    marginBottom: 5
+    marginBottom: 5,
   },
   buttons: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 5
+    marginTop: 5,
   },
   button: {
     flex: 1,
@@ -165,17 +207,17 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 6,
     borderWidth: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
   buttonText: {
     fontSize: 14,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   input: {
     borderWidth: 1,
     borderRadius: 6,
     padding: 6,
-    marginVertical: 4
+    marginVertical: 4,
   },
   verCarrinho: {
     width: "50%",
@@ -185,6 +227,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: 10
-  }
+    marginTop: 10,
+  },
+  userImage: {
+  width: 40,
+  height: 40,
+  borderRadius: 20,
+  borderWidth: 2,           // borda
+  },
+  iconWrapper: {
+    borderWidth: 2,           // borda no ícone padrão
+    borderRadius: 25,         // arredondado
+    padding: 2,               // espaço interno para não cortar o ícone
+  },
+
 });

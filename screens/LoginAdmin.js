@@ -14,7 +14,7 @@ export default function LoginAdmin({ navigation }) {
     }
 
     if (usuario === "admin" && senha === "1234") {
-      salvarUsuario({ tipo: "admin", usuario });
+      salvarUsuario({ nome: "Administrador", tipo: "admin", matricula: "0000" });
       Alert.alert("Sucesso", "Login realizado com sucesso!");
       navigation.replace("Main");
     } else {
@@ -73,10 +73,10 @@ const styles = StyleSheet.create({
   },
   input: {
     padding: 15,
-    width: "80%",   // mais responsivo
+    width: "80%",
     height: 50,
     borderRadius: 10,
-    borderWidth: 1, // mantido do código 1
+    borderWidth: 1,
     marginBottom: 20,
     alignSelf: "center",
   },
