@@ -5,8 +5,8 @@ import { lightTheme, darkTheme } from "../contexts/theme"; // importa paletas
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  // Usuário fictício (nome e matrícula)
-  const [user, setUser] = useState({ nome: "", matricula: "" });
+  // Usuário (aluno ou admin)
+  const [user, setUser] = useState({ nome: "", matricula: "", tipo: "" });
 
   // Histórico de compras
   const [historico, setHistorico] = useState([]);
@@ -14,8 +14,8 @@ export const UserProvider = ({ children }) => {
   // Tema claro/escuro
   const [tema, setTema] = useState("light");
 
-  // Cardápio fixo
-  const [cardapio, setCardapio] = useState([
+  // Cardápio
+  const [cardapio, setCardapioState] = useState([
     {
       id: "1",
       nome: "Coxinha",
@@ -73,10 +73,12 @@ export const UserProvider = ({ children }) => {
         const userData = await AsyncStorage.getItem("usuario");
         const historicoData = await AsyncStorage.getItem("historico");
         const temaData = await AsyncStorage.getItem("tema");
+        const cardapioData = await AsyncStorage.getItem("cardapio"); // 🔑 novo
 
         if (userData) setUser(JSON.parse(userData));
         if (historicoData) setHistorico(JSON.parse(historicoData));
         if (temaData) setTema(temaData);
+        if (cardapioData) setCardapioState(JSON.parse(cardapioData)); // 🔑 novo
       } catch (error) {
         console.log("Erro ao carregar dados:", error);
       }
@@ -104,6 +106,12 @@ export const UserProvider = ({ children }) => {
     await AsyncStorage.setItem("tema", novoTema);
   };
 
+  // Atualizar cardápio e salvar
+  const atualizarCardapio = async (novoCardapio) => {
+    setCardapioState(novoCardapio);
+    await AsyncStorage.setItem("cardapio", JSON.stringify(novoCardapio));
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -113,9 +121,9 @@ export const UserProvider = ({ children }) => {
         adicionarCompra,
         tema,
         alternarTema,
-        themeColors, // 🔑 exposto para todas as telas
+        themeColors,
         cardapio,
-        setCardapio,
+        setCardapio: atualizarCardapio, // 🔑 agora persiste no AsyncStorage
         carrinho,
         setCarrinho,
       }}
